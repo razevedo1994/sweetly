@@ -11,7 +11,7 @@ Browser
               ├── Auth middleware (JWT via HttpOnly cookie)
               ├── Jinja2 templates  ──► full-page HTML
               ├── HTMX partials     ──► HTML fragments (HX-Request)
-              └── SQLAlchemy ORM
+              └── SQLModel ORM
                     └── SQLite (sweetly.db)
 ```
 
@@ -27,10 +27,14 @@ All application state is persisted in a single SQLite file. No external services
 | Web framework | FastAPI | Already a dependency; async-capable, good DX |
 | Templating | Jinja2 | Ships with FastAPI; sufficient for SSR |
 | Dynamic UI | HTMX | Enables SPA-like interactions without a JS build step |
-| ORM | SQLAlchemy 2.x | Abstraction over SQLite; enables future DB swap |
+| ORM | SQLModel (SQLAlchemy 2.x + Pydantic) | Combines ORM models and Pydantic validation in one definition |
 | Database | SQLite | Zero-config, file-based; suitable for low volume |
-| Auth | JWT (HttpOnly cookie) | Stateless; cookie avoids JS token management |
+| Settings | pydantic-settings | Typed config loaded from `.env` |
+| Auth | JWT (PyJWT) via HttpOnly cookie | Stateless; cookie avoids JS token management |
 | Password hashing | bcrypt (passlib) | Industry standard |
+| Form parsing | python-multipart | Required by FastAPI/Starlette for HTML form bodies |
+| Testing | pytest | Standard Python test runner |
+| Linting & formatting | ruff | Single fast tool for linting and formatting |
 | Deployment | Uvicorn (+ optional Docker) | Single command, minimal ops overhead |
 
 ---
