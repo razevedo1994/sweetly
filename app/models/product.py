@@ -2,8 +2,6 @@ from datetime import UTC, datetime
 from decimal import Decimal
 from typing import Optional
 
-from pydantic.main import BaseModel
-from sqlalchemy import table
 from sqlmodel import Field, Relationship, SQLModel
 
 from app.models.category import Category
