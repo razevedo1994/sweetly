@@ -8,7 +8,7 @@ from sqlmodel import Field, SQLModel
 class User(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     username: str = Field(unique=True, nullable=False)
-    password: HashedPassword
+    password: HashedPassword = Field(nullable=False)
     role: str
     is_active: bool = Field(default=True, nullable=False)
     created_at: datetime = Field(
