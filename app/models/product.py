@@ -22,4 +22,4 @@ class Product(SQLModel, table=True):
         default_factory=lambda: datetime.now(UTC), nullable=False
     )
 
-    category: Optional["Category"] = Relationship(back_populates="products")
+    category: Optional[Category] = Relationship(back_populates="products")
