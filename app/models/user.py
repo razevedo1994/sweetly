@@ -2,7 +2,9 @@ from datetime import UTC, datetime
 from typing import Optional
 
 from services.auth import HashedPassword
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field, Relationship, SQLModel
+
+from app.models.order import Order
 
 
 class User(SQLModel, table=True):
@@ -14,3 +16,5 @@ class User(SQLModel, table=True):
     created_at: datetime = Field(
         default_factory=lambda: datetime.now(UTC), nullable=False
     )
+
+    orders: list["Order"] = Relationship(back_populates="user")
