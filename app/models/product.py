@@ -5,6 +5,7 @@ from typing import Optional
 from sqlmodel import Field, Relationship, SQLModel
 
 from app.models.category import Category
+from app.models.order import OrderItems
 
 
 class Product(SQLModel, table=True):
@@ -23,3 +24,4 @@ class Product(SQLModel, table=True):
     )
 
     category: Optional[Category] = Relationship(back_populates="products")
+    orders: list["OrderItems"] = Relationship(back_populates="products")
