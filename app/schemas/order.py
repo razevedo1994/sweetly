@@ -1,7 +1,9 @@
-from pydantic import BaseModel
-from enum import Enum
-from decimal import Decimal
 from datetime import datetime
+from decimal import Decimal
+from enum import Enum
+from typing import Literal
+
+from pydantic import BaseModel
 
 
 class Status(str, Enum):
@@ -13,7 +15,7 @@ class Status(str, Enum):
 
 class OrderResponse(BaseModel):
     customer_name: str
-    status: Status.PENDING
+    status: Literal[Status.PENDING]
     total_price: Decimal
     created_by_id: int
     created_at: datetime
