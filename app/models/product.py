@@ -24,4 +24,4 @@ class Product(SQLModel, table=True):
     )
 
     category: Optional[Category] = Relationship(back_populates="products")
-    orders: list["OrderItems"] = Relationship(back_populates="products")
+    orders: list["OrderItems"] = Relationship(back_populates="product")
