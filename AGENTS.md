@@ -1,6 +1,6 @@
 # Sweetly
 
-Internal web app for a small bakery: product catalog + customer orders, Admin/Staff roles.
+Internal web app for a small bakery: product catalog + customer orders, Admin and non-Admin Users.
 Early scaffold, so there's no runnable app yet. `main.py` is a print stub and no FastAPI app exists.
 
 ## Toolchain
@@ -12,14 +12,15 @@ Early scaffold, so there's no runnable app yet. `main.py` is a print stub and no
 
 ## Design sources (gitignored, so search tools may skip them; read them by path)
 - `docs/project_requirements.md`: functional requirements.
-- `SYSTEM_DESIGN.md`: target architecture, routes, the order status lifecycle and env vars.
+- `GLOSSARY.md`: domain vocabulary (User, Admin, Customer, Collected, Archived...). Use these terms in code and docs.
+- `docs/SYSTEM_DESIGN.md`: target architecture, routes, the order status lifecycle and env vars.
   Trust the code over this doc when they disagree.
 - `texto.md` (untracked): build order: config → models → schemas → auth service →
   `app/dependencies.py` → routers → `main.py` wiring.
 - `KNOWN_ISSUES.md`: current bugs in the scaffold. Read it before touching `app/models/`, `app/database.py`,
   `app/config.py`, `app/schemas/` or auth, and remove entries as they get fixed.
 
-## Target architecture (from SYSTEM_DESIGN.md)
+## Target architecture (from docs/SYSTEM_DESIGN.md)
 - A single FastAPI process renders Jinja2 pages plus HTMX partials. There is no JS build.
   The same endpoint returns a fragment when the request has `HX-Request: true`.
   Partial templates are prefixed with `_` (e.g. `_row.html`).
