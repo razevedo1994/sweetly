@@ -10,7 +10,8 @@ class Status(str, Enum):
     PENDING = "pending"
     IN_PREPARATION = "in_preparation"
     READY = "ready"
-    DELIVERED = "delivered"
+    COLLECTED = "collected"
+    CANCELLED = "cancelled"
 
 
 class OrderResponse(BaseModel):
