@@ -36,4 +36,4 @@ class OrderItems(SQLModel, table=True):
     quantity: int = Field(ge=1, nullable=False)
 
     order: Optional[Order] = Relationship(back_populates="order_items")
-    products: list["Product"] = Relationship(back_populates="orders")
+    product: Optional["Product"] = Relationship(back_populates="orders")
